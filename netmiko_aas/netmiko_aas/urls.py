@@ -20,12 +20,13 @@ from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 
 router = routers.DefaultRouter()
-router.register(r'netmiko', views.SshViewSet)
+router.register(r'netmiko', views.SshCreateViewSet)
+router.register(r'netmiko/fetch', views.SshFetchViewSet)
 
 swagger_view = get_swagger_view(title="Netmiko as a Service")
 
 urlpatterns = [
     path('', swagger_view),
-    path('api/v1/', include(router.urls)),
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
 ]
