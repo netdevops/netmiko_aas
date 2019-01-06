@@ -16,7 +16,7 @@ def netmiko_execution(request):
         "host": request["host"],
         "username": request["username"],
         "password": environ.get("NETMIKO_PASSWORD", None),
-        "verbose": True
+        "verbose": True,
     }
 
     with ConnectHandler(**device) as ssh:

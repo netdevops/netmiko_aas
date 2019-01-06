@@ -1,10 +1,11 @@
 from rest_framework import viewsets
+from rest_framework import mixins
 from .models import Ssh
 from .serializers import SshSerializer
 from .tasks import netmiko_execution
 
 
-class SshViewSet(viewsets.ModelViewSet):
+class SshViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset = Ssh.objects.all()
     serializer_class = SshSerializer
 

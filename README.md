@@ -21,7 +21,6 @@ pip3 install -r requirements.txt
 ```
 * Setup database tables
 ```
-./manage.py makemigrations ssh_api
 ./manage.py migrate
 ```
 * Spin up Celery
