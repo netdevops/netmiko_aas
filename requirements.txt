@@ -1,0 +1,6 @@
+Django==2.1.4
+django-rest-swagger==2.2.0
+celery==4.2.1
+netmiko==2.3.0
+psycopg2==2.7.6.1
+redis==3.0.1
