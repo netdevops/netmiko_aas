@@ -22,7 +22,7 @@ def netmiko_execution(request):
     with ConnectHandler(**device) as ssh:
         if request["execution_type"] == "execution":
             for command in request["commands"]:
-                output += ssh.send_command_timing(command)
+                output += ssh.send_command(command)
         else:
             output += ssh.send_config_set(request["commands"])
 

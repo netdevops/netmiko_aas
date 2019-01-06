@@ -9,8 +9,6 @@ class SshViewSet(viewsets.ModelViewSet):
     serializer_class = SshSerializer
 
     def create(self, request, *args, **kwargs):
-        print(**kwargs)
-        print(*args)
         execution = super().create(request, *args, **kwargs)
         netmiko_execution.delay(execution.data)
         return execution
