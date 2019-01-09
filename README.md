@@ -51,7 +51,7 @@ These credentials are used to log into the remote machine.
 
 ### POST
 ```
-curl -X POST "http://localhost:8000/api/v1/netmiko/" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"host\": \"watch\", \"device_type\": \"linux\", \"execution_type\": \"execution\", \"commands\": [ \"ping -c 2 1.1.1.1\" ]}" -H "NETAUTH: {\"username\": \"jtdub\", \"password\": \"somepassword\"} -H "Authorization: Token 70fe753a3e602f0da51ef05a9f3c59d7c52e9649"
+curl -X POST "http://localhost:8000/api/v1/netmiko/" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"host\": \"watch\", \"device_type\": \"linux\", \"execution_type\": \"execution\", \"commands\": [ \"ping -c 2 1.1.1.1\" ]}" -H "NETAUTH: <tacacs_user>:<tacacs_password>" -H "Authorization: Token 70fe753a3e602f0da51ef05a9f3c59d7c52e9649"
 
 {"id":1,"created":"2019-01-09T01:28:53.755381Z","username":"jtdub","source":"127.0.0.1","host":"watch","device_type":"linux","execution_type":"execution","commands":["ping -c 2 1.1.1.1"],"output":"","completed":null}
 ```
