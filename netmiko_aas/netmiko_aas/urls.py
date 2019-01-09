@@ -30,4 +30,5 @@ urlpatterns = [
     path('api/v1/', include(router.urls)),
     path('api/auth/', auth_views.obtain_auth_token),
     path('admin/', admin.site.urls),
+    path('accounts/', admin.site.urls)
 ]
