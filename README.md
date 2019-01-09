@@ -46,7 +46,7 @@ curl -X POST "http://localhost:8000/api/auth/" -H "accept: application/json" -H 
 {"token": "70fe753a3e602f0da51ef05a9f3c59d7c52e9649"}
 ```
 
-To create new tasks, you have to send a POST operation with `{"NETAUTH": {"username": <username>, "password": <password>}` in the headers.
+To create new tasks, you have to send a POST operation with `"NETAUTH: <username>:<password>"` in the headers.
 These credentials are used to log into the remote machine.
 
 ### POST
