@@ -2,7 +2,6 @@ from celery import shared_task
 from ssh_api.models import Ssh
 from django.utils import timezone
 from netmiko import ConnectHandler
-from os import environ
 
 
 @shared_task
@@ -15,7 +14,7 @@ def netmiko_execution(request):
         "device_type": request["device_type"],
         "host": request["host"],
         "username": request["username"],
-        "password": environ.get("NETMIKO_PASSWORD", None),
+        "password": request["password"],
         "verbose": True,
     }
 
@@ -26,6 +25,8 @@ def netmiko_execution(request):
         else:
             output += ssh.send_config_set(request["commands"])
 
+    database.username = request["username"]
+    database.source = request["source"]
     database.output = output
     database.completed = timezone.now()
     database.save()
