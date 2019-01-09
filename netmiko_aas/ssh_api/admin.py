@@ -3,9 +3,21 @@ from .models import Ssh
 
 # Register your models here.
 
-admin.site.register(Ssh)
+fields = ('id',
+          'created',
+          'username',
+          'source',
+          'host',
+          'device_type',
+          'execution_type',
+          'commands',
+          'output',
+          'completed')
 
 
 class SshAdmin(admin.ModelAdmin):
-    list_display = ('id', 'created' 'username', 'host', 'type', 'commands')
-    search_fields = ('id', 'created', 'username', 'host', 'device_type', 'execution_type', 'commands', 'completed')
+    list_display = fields
+    search_fields = fields
+
+
+admin.site.register(Ssh, SshAdmin)

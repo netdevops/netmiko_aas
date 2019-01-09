@@ -1,5 +1,7 @@
 from rest_framework import viewsets
 from rest_framework import mixins
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 from .models import Ssh
 from .serializers import SshSerializer
 from .tasks import netmiko_execution
@@ -12,8 +14,12 @@ class SshViewSet(mixins.CreateModelMixin,
                  viewsets.GenericViewSet):
     queryset = Ssh.objects.all()
     serializer_class = SshSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
     def create(self, request, *args, **kwargs):
+        print(request.user)
+        print(request.auth)
         source = request.META.get("REMOTE_ADDR", None)
         credentials = json.loads(request.META.get("HTTP_NETAUTH", None))
         request = super().create(request, *args, **kwargs)
