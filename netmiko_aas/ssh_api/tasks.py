@@ -1,13 +1,13 @@
 from celery import shared_task
-from ssh_api.models import Ssh
+from .models import SshJob
 from django.utils import timezone
 from netmiko import ConnectHandler
 
 
 @shared_task
 def netmiko_execution(request):
-    output = str()
-    database = Ssh()
+    output = ''
+    database = SshJob()
     database.id = request["id"]
     database.refresh_from_db()
     device = {

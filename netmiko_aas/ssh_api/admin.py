@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Ssh
+from .models import SshJob
 
 # Register your models here.
 
-fields = ('id',
+FIELDS = ('id',
           'created',
           'username',
           'source',
@@ -16,8 +16,8 @@ fields = ('id',
 
 
 class SshAdmin(admin.ModelAdmin):
-    list_display = fields
-    search_fields = fields
+    list_display = FIELDS
+    search_fields = FIELDS
 
 
-admin.site.register(Ssh, SshAdmin)
+admin.site.register(SshJob, SshAdmin)

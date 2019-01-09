@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework import mixins
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-from .models import Ssh
+from .models import SshJob
 from .serializers import SshSerializer
 from .tasks import netmiko_execution
 import simplejson as json
@@ -12,7 +12,7 @@ class SshViewSet(mixins.CreateModelMixin,
                  mixins.ListModelMixin,
                  mixins.RetrieveModelMixin,
                  viewsets.GenericViewSet):
-    queryset = Ssh.objects.all()
+    queryset = SshJob.objects.all()
     serializer_class = SshSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)

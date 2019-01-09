@@ -6,7 +6,7 @@ EXECUTION_TYPES = [('execution', 'Non-configuration commands'),
                    ('configuration', 'Configuration commands')]
 
 
-class Ssh(models.Model):
+class SshJob(models.Model):
     id = models.AutoField(primary_key=True, editable=False)
     created = models.DateTimeField(auto_now_add=True)
     username = models.CharField(max_length=64, editable=False)
