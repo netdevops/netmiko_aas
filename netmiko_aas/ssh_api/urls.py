@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import include, path
-from ssh_api import views as ssh_views
+from . import views as ssh_views
 from rest_framework import routers
 from rest_framework.authtoken import views as auth_views
 from rest_framework_swagger.views import get_swagger_view
