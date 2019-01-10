@@ -6,17 +6,27 @@ import simplejson as json
 
 class NaasClient:
 
-    def __init__(self, url, token=None, **kwargs):
+    def __init__(self,
+                 url,
+                 token=None,
+                 api_username=None,
+                 api_password=None,
+                 net_username=None,
+                 net_password=None,
+                 device_type=None,
+                 execution_type="execution",
+                 host=None,
+                 commands=None):
         self.url = url
         self.token = token
-        self.api_username = kwargs.get("api_username", None)
-        self.api_password = kwargs.get("api_password", None)
-        self.net_username = kwargs.get("net_username", None)
-        self.net_password = kwargs.get("net_password", None)
-        self.device_type = kwargs.get("device_type", None)
-        self.execution_type = kwargs.get("execution_type", "execution")
-        self.host = kwargs.get("host", None)
-        self.commands = kwargs.get("commands", None)
+        self.api_username = api_username
+        self.api_password = api_password
+        self.net_username = net_username
+        self.net_password = net_password
+        self.device_type = device_type
+        self.execution_type = execution_type
+        self.host = host
+        self.commands = commands
 
         if not isinstance(self.commands, list):
             self.commands = (self.commands,)
