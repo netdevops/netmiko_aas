@@ -153,7 +153,7 @@ pip install -r requirements.txt
 export NETMIKO_AAS_DB_NAME="naasdb"
 export NETMIKO_AAS_DB_USER="postgres"
 export NETMIKO_AAS_DB_PASS="mysecretpassword"
-export NETMIKO_AAS_DB_HOST="naasdb"
+export NETMIKO_AAS_DB_HOST="localhost"
 
 ./manage.py migrate
 ./manage.py createsuperuser
@@ -161,6 +161,7 @@ export NETMIKO_AAS_DB_HOST="naasdb"
 
 ### Spin up the Netmiko As A Service Container
 ```
+export NETMIKO_AAS_DB_HOST="naasdb"
 docker run -it -p 8000:8000 \
 --name naas \
 --link naasdb \
