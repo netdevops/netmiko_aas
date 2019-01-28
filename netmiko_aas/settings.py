@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'heh1zau_7dw@e7yyow-a!rdyzsm^bg1$-yvr*hw&ahux1o)f=l'
+SECRET_KEY = os.environ.get('NETMIKO_AAS_SECRET_KEY', 'heh1zau_7dw@e7yyow-a!rdyzsm^bg1$-yvr*hw&ahux1o)f=l')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('NETMIKO_AAS_DEBUG', True)
 
 ALLOWED_HOSTS = []
 
@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'netmiko_aas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'naasdb',
-        'USER': 'postgres',
-        'PASSWORD': 'mysecretpassword',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': os.environ.get('NETMIKO_AAS_DB_NAME', 'naasdb'),
+        'USER': os.environ.get('NETMIKO_AAS_DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('NETMIKO_AAS_DB_PASS', 'mysecretpassword'),
+        'HOST': os.environ.get('NETMIKO_AAS_DB_HOST', '127.0.0.1'),
+        'PORT': os.environ.get('NETMIKO_AAS_DB_PORT', '5432'),
     }
 
 }
@@ -143,8 +143,8 @@ REST_FRAMEWORK = {
     )
 }
 
-BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+BROKER_URL = os.environ.get('NETMIKO_AAS_BROKER_URL', 'redis://localhost:6379')
+CELERY_RESULT_BACKEND = os.environ.get('NETMIKO_AAS_CELERY_RESULT_BACKEND', 'redis://localhost:6379')
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
