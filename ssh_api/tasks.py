@@ -1,7 +1,12 @@
 from celery import shared_task
 from .models import SshJob
+from .command_arbiter import send_config_set_with_arbiter
 from django.utils import timezone
 from netmiko import ConnectHandler
+from netmiko import BaseConnection
+
+
+BaseConnection.send_config_set = send_config_set_with_arbiter
 
 
 @shared_task
